@@ -1,3 +1,4 @@
 # RickMortyApp
 
-test
+- mongod
+- npm run start
