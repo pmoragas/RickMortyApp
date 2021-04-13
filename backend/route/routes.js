@@ -1,22 +1,25 @@
-//initialize express router
 let router = require('express').Router();
-//set default API response
+
+// Default API response
 router.get('/', function(req, res) {
     res.json({
-        status: 'API Works',
-        message: 'Welcome to FirstRest API'
+        status: 'OK',
+        message: 'RickMortyApp API is up and running'
     });
 });
-//Import Bio Controller
-var bioController = require('../controller/bioController');
-// Bio routes
-router.route('/bio')
-    .get(bioController.index)
-    .post(bioController.add);
-router.route('/bio/:bio_id')
-    .get(bioController.view)
-    .patch(bioController.update)
-    .put(bioController.update)
-    .delete(bioController.delete);
+
+// Controllers
+var favController = require('../controller/favController');
+var charController = require('../controller/charController');
+
+// Routes
+router.route('/fav')
+    .get(favController.index)
+    .post(favController.add);
+router.route('/fav/:fav_id')
+    .delete(favController.delete);
+router.route('/character')
+    .get(charController.index);
+
 //Export API routes
 module.exports = router;

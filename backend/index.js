@@ -24,7 +24,7 @@ app.use('/api', apiRoutes)
 let mongoose = require('mongoose');
 
 //connect to mongoose
-const dbPath = 'mongodb://localhost/firstrest';
+const dbPath = 'mongodb://localhost/rickMortyDB';
 const options = {useNewUrlParser: true, useUnifiedTopology: true}
 const mongo = mongoose.connect(dbPath, options);
 mongo.then(() => {

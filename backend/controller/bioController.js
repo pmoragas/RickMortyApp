@@ -18,11 +18,7 @@ exports.index = function (req, res) {
 };
 //For creating new bio
 exports.add = function (req, res) {
-    var bio = new Bio();
-    bio.name = req.body.name? req.body.name: bio.name;
-    bio.email = req.body.email;
-    bio.phone = req.body.phone;
-    bio.address = req.body.address;
+    var bio = new Bio(req.body);
 //Save and check error
     bio.save(function (err) {
         if (err)
