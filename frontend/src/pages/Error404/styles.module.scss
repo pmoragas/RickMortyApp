@@ -1,0 +1,28 @@
+.container {
+    .box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 20px 0px 20px;
+        cursor: pointer;
+
+        p {
+            font-family: sans-serif;
+            font-weight: 500;
+            font-size: 24px;
+        }
+
+        button {
+            border:2px solid #56B632;
+            background-color:#7FFD40;
+        }
+
+        &:hover {
+            background-color: rgba(127,253,64,0.4);
+        }
+    }
+}
