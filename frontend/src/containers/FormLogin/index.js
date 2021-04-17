@@ -8,7 +8,7 @@ import styles from './styles.module.scss';
 const FormLogin = ({ onSubmitForm, className }) => {
 	const { register, handleSubmit } = useForm();
 	const onSubmit = (data) => {
-		console.log(data);
+		onSubmitForm(data);
 	};
 
 	return (

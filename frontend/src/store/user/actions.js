@@ -13,11 +13,12 @@
  */
 
 import { USER_UPDATE, ERROR_UPDATE } from './actionNames';
+import RickMortyApi from 'services/rickMortyApi';
 
 export const login = (values) => async (dispatch) => {
 	try {
-		//const user = await newsroom.userSignin(values);
-		const user = {};
+		const user = await RickMortyApi.userSignin(values);
+
 		if (user.token) {
 			localStorage.setItem('user', JSON.stringify(user));
 
