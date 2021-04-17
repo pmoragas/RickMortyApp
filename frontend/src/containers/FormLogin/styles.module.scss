@@ -1,0 +1,59 @@
+@import '~styles/colors';
+
+.formContainer {
+
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    width: 50%;
+    padding: 15px;
+    display:flex;
+    max-width: 375px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 8px 21px 0 rgba($primary, 0.16);
+    border: solid 1px rgba($secondary, 0.5);
+    background-color: $white;
+    font-family: sans-serif;
+    .loginTitle {
+        font-weight: 500;
+        font-size: 20px;
+        color: $tertiary;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .inputWrapper {
+            padding: 5px;
+
+            .label {
+                color: $tertiary;
+                font-size: 14px;
+            }
+            input {
+                border: solid 1px rgba($secondary, 0.5);
+                background-color: rgba($primary, 0.16);
+            }
+        }
+
+        .buttonContainer {
+            padding: 15px 15px 0 15px;
+
+            button {
+                font-weight: 500;
+                font-size: 16px;
+                border: solid 1px rgba($secondary, 0.5);
+                background-color: rgba($primary, 0.16);
+                color: $tertiary;
+
+                &:hover {
+                    background-color: rgba($secondary, 0.5);
+                }
+            }
+        }
+
+    }
+}

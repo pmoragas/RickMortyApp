@@ -15,7 +15,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import App from 'pages/App';
-import Login from 'pages/App';
+import Login from 'pages/Login';
 import Error404 from 'pages/Error404';
 import {
 	HOME_PATH,

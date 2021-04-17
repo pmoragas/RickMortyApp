@@ -12,18 +12,14 @@
  * from Marfeel Solutions SL.
  */
 
-import newsroom from 'services/newsroom';
-import { getStore } from 'utils/store';
-
 import { USER_UPDATE, ERROR_UPDATE } from './actionNames';
 
 export const login = (values) => async (dispatch) => {
 	try {
-		const user = await newsroom.userSignin(values);
-
+		//const user = await newsroom.userSignin(values);
+		const user = {};
 		if (user.token) {
-			getStore().set('user', user);
-			getStore().set('isFirstVisit', true);
+			localStorage.setItem('user', JSON.stringify(user));
 
 			dispatch({
 				type: USER_UPDATE,
@@ -41,7 +37,7 @@ export const login = (values) => async (dispatch) => {
 export const setUser = (user) => (dispatch) => {
 	try {
 		if (user.token) {
-			getStore().set('user', user);
+			localStorage.setItem('user', JSON.stringify(user));
 
 			dispatch({
 				type: USER_UPDATE,
@@ -58,14 +54,14 @@ export const setUser = (user) => (dispatch) => {
 
 export const updateUser = (data) => async (dispatch) => {
 	try {
-		await newsroom.updateUser(data);
+		//await newsroom.updateUser(data);
 
-		const user = getStore().get('user');
+		const user = JSON.parse(localStorage.getItem('user'));
 
 		user.name = data.name;
 		user.surname = data.surname;
 
-		getStore().set('user', user);
+		localStorage.setItem('user', JSON.stringify(user));
 		dispatch({
 			type: USER_UPDATE,
 			payload: { user, error: false },
@@ -79,7 +75,7 @@ export const updateUser = (data) => async (dispatch) => {
 };
 
 export const logout = () => async (dispatch) => {
-	getStore().remove('user');
+	localStorage.removeItem('user');
 	dispatch({
 		type: USER_UPDATE,
 		payload: { user: null, error: false, loggedOut: true },
