@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { HOME_PATH } from 'router/paths';
+import { CHARACTERS_PATH } from 'router/paths';
 
 import error404 from'./404.png';
 import styles from './styles.module.scss';
@@ -10,7 +10,7 @@ const Error404 = () => {
   return (
     <div className={styles.container}>
       <div className={styles.box} onClick={() => {
-            history.push(HOME_PATH);
+            history.push(CHARACTERS_PATH);
           }}>
 	  	<img  src={error404} style={styles.image} alt="Wrong Universe 404"/>
 		<p>Oops! Wrong Universe... 404</p>

@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import {logout} from 'store/user/actions';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { CHARACTERS_PATH } from 'router/paths';
+import logo from './rick_morty_logo.png';
+import styles from './styles.module.scss';
 
-function App() {
+const App = ({children}) => {
+  const dispatch = useDispatch();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <Link
+          className={styles.link}
+          to={CHARACTERS_PATH}
         >
-          Learn React
-        </a>
-      </header>
+          <img className={styles.logo} src={logo} alt="Rick Morty Logo"/>
+        </Link>
+        <button onClick={()=> dispatch(logout())}>Logout</button>
+      </div>
+      <div className={styles.content}>
+					{children}
+				</div>
     </div>
   );
 }

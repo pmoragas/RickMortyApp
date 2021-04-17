@@ -29,7 +29,7 @@ const schemaRegister = Joi.object({
 })
 
 // Routes
-router.post('/user/login', async (req, res) => {
+router.post('/user/signin', async (req, res) => {
     // validaciones
     const { error } = schemaLogin.validate(req.body);
     if (error) return res.status(400).json({ error: error.details[0].message })
@@ -51,7 +51,7 @@ router.post('/user/login', async (req, res) => {
 
     res.header('auth-token', token).json({
         error: null,
-        data: {token}
+        token
     })
 })
 

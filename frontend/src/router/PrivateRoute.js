@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { LOGIN_PATH } from './paths';
 
 const PrivateRoute = ({ children, ...rest }) => {
-	const { user } = useSelector((state) => state.user);
-
+	const user = JSON.parse(localStorage.getItem('user'));
 	const isAuth = !!user;
 
 	const getRoute = (loc) => {

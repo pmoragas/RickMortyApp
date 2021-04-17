@@ -3,7 +3,7 @@ import axios from 'axios';
 class RickMortyApi {
 	constructor() {
 		this.api = axios.create({
-			baseURL: process.env.RICK_MORTY_API,
+			baseURL: 'http://localhost:3030/api/',
 			headers: {
 				'Content-type': 'application/json',
 			},
