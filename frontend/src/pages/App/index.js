@@ -19,8 +19,8 @@ const App = ({children}) => {
         <button onClick={()=> dispatch(logout())}>Logout</button>
       </div>
       <div className={styles.content}>
-					{children}
-				</div>
+				{children}
+			</div>
     </div>
   );
 }

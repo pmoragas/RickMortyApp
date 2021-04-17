@@ -27,7 +27,6 @@ const Login = () => {
     }
 
     if (user) {
-      console.log(user);
       const { from } = location.state || { from: { pathname: CHARACTERS_PATH } };
 
       history.replace(from);

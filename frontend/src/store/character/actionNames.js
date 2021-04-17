@@ -1,0 +1,1 @@
+export const CHARACTER_UPDATE = 'CHARACTER_UPDATE';

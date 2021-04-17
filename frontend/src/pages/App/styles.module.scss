@@ -1,14 +1,17 @@
 @import '~styles/colors';
 
+$headerHeight: 88px;
+
 .container {
     height: 100vh;
     display: flex;
+    flex-direction: column;
 
     .header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: 80px;
+        height: $headerHeight;
         width: 100%;
 
         .link {
@@ -16,6 +19,12 @@
             .logo {
                 height: 55px;
                 padding: 10px;
+                border-radius: 20px;
+
+                &:hover {
+                    background-color: rgba($primary, 0.4);
+                    cursor: pointer;
+                }
             }
 
         }
@@ -34,5 +43,9 @@
                 background-color: rgba($secondary, 0.5);
             }
         }
+    }
+
+    .content {
+        height: calc(100vh - #{$headerHeight});
     }
 }

@@ -33,7 +33,7 @@ exports.add = function (req, res) {
 // Delete Fav
 exports.delete = function (req, res) {
     Fav.deleteOne({
-        _id: req.params.fav_id
+        char_id: req.params.fav_id
     }, function (err, contact) {
         if (err)
             res.send(err)

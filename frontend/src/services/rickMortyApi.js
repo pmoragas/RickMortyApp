@@ -26,6 +26,24 @@ class RickMortyApi {
 		});
 		return response.data;
 	};
+
+	getCharacters = async () => {
+		const response = await this.api.get('character');
+
+		return response.data;
+	};
+
+	addFav = async (id) => {
+		const response = await this.api.post('fav', {char_id: id, fav: true});
+
+		return response.data;
+	};
+
+	deleteFav = async (id) => {
+		const response = await this.api.delete(`fav/${id}`);
+
+		return response.data;
+	};
 }
 
 export default new RickMortyApi();
