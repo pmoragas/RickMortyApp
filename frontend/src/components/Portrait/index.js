@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './styles.module.scss';
 import redHeart from 'assets/red_heart.png';
@@ -36,5 +37,14 @@ const Portrait = (props) => {
         </div>
     );
 }
+
+Portrait.propTypes = {
+	name: PropTypes.string.isRequired,
+	status: PropTypes.string.isRequired,
+	species: PropTypes.string.isRequired,
+	imgSource: PropTypes.string.isRequired,
+	fav: PropTypes.bool.isRequired,
+	onFavClick: PropTypes.func.isRequired,
+};
 
 export default Portrait;

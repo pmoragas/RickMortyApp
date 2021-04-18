@@ -4,6 +4,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { login } from 'store/user/actions';
 import FormLogin from 'containers/FormLogin';
 import { CHARACTERS_PATH } from 'router/paths';
+import logo from 'assets/rick_morty_logo.png';
 
 import styles from './styles.module.scss';
 
@@ -35,6 +36,7 @@ const Login = () => {
 
   return (
     <div className={styles.container}>
+      <img className={styles.logo} src={logo} alt="Rick Morty Logo"/>
       <div className={styles.formContainer}>
         <FormLogin className={styles.formLogin} onSubmitForm={onSubmitForm} />
       </div>

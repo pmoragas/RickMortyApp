@@ -1,8 +1,11 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Card from 'components/Card';
-import { CHARACTERS_FAV_UPDATE } from  'store/character/actionNames';
-import { getCharacters, toggleFav } from 'store/character/actions';
+import { CHARACTERS_DETAIL_PATH } from 'router/paths';
+import { getCharacters } from 'store/character/actions';
+
 import styles from './styles.module.scss';
 
 const Character = () => {
@@ -15,19 +18,22 @@ const Character = () => {
 
     return (
         <div className={styles.container}>
-            {characters.map((item,index) =>
-                <Card
+            {characters.length > 0 && characters.map((item,index) =>
+                <Link
                     key={index}
-                    name={item.name}
-                    status={item.status}
-                    species={item.species}
-                    gender={item.gender}
-                    residence={item.location.name}
-                    origin={item.origin.name}
-                    imgSource={item.image}
-                    fav={item.fav}
-                    onFavClick={() => dispatch(toggleFav(item, CHARACTERS_FAV_UPDATE))}
-                />
+                    className={styles.link}
+                    to={CHARACTERS_DETAIL_PATH.replace(':detailId', item.id)}>
+                    <Card
+                        name={item.name}
+                        status={item.status}
+                        species={item.species}
+                        gender={item.gender}
+                        residence={item.location.name}
+                        origin={item.origin.name}
+                        imgSource={item.image}
+                        fav={item.fav}
+                    />
+                </Link>
             )};
         </div>
     );

@@ -5,8 +5,12 @@
     flex-direction: column;
     position: relative;
 
-    .formContainer {
+    .logo {
+      width:500px;
       margin-top: 60px;
+    }
+
+    .formContainer {
       width: 50%;
       padding: 0 16px;
       display: flex;

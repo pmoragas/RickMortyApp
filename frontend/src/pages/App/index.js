@@ -2,7 +2,7 @@ import {logout} from 'store/user/actions';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { CHARACTERS_PATH } from 'router/paths';
-import logo from './rick_morty_logo.png';
+import logo from 'assets/rick_morty_logo.png';
 import styles from './styles.module.scss';
 
 const App = ({children}) => {
