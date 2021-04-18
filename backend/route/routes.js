@@ -2,9 +2,11 @@ let router = require('express').Router();
 const Joi = require('@hapi/joi');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv').config()
+require('dotenv').config();
 
 const User = require('../model/userModel');
+const UserMiddleware = require("../middleware/User.js");
+
 // Default API response
 router.get('/', function(req, res) {
     res.json({
@@ -87,15 +89,16 @@ router.post('/user/register', async (req, res) => {
         res.status(400).json({error})
     }
 });
+
 router.route('/fav')
-    .get(favController.index)
-    .post(favController.add);
+    .get(UserMiddleware.isValidUser, favController.index)
+    .post(UserMiddleware.isValidUser, favController.add);
 router.route('/fav/:fav_id')
-    .delete(favController.delete);
+    .delete(UserMiddleware.isValidUser, favController.delete);
 router.route('/character')
-    .get(charController.index);
+    .get(UserMiddleware.isValidUser, charController.index);
 router.route('/character/:char_id')
-    .get(charController.one);
+    .get(UserMiddleware.isValidUser, charController.one);
 
 //Export API routes
 module.exports = router;

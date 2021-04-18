@@ -18,6 +18,7 @@ exports.index = function (req, res) {
 
 // Add Fav
 exports.add = function (req, res) {
+    console.log(req.body, req.params);
     var fav = new Fav(req.body);
 
     fav.save(function (err) {

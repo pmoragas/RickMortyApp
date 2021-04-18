@@ -28,25 +28,33 @@ class RickMortyApi {
 	};
 
 	getCharacters = async () => {
-		const response = await this.api.get('character');
+		const response = await this.api.get('character', {
+			headers: this.getHeaders(),
+		});
 
 		return response.data;
 	};
 
 	getCharacter = async (id) => {
-		const response = await this.api.get(`character/${id}`);
+		const response = await this.api.get(`character/${id}`, {
+			headers: this.getHeaders(),
+		});
 
 		return response.data;
 	};
 
 	addFav = async (id) => {
-		const response = await this.api.post('fav', {char_id: id, fav: true});
+		const response = await this.api.post('fav', {char_id: id, fav: true}, {
+			headers: this.getHeaders(),
+		});
 
 		return response.data;
 	};
 
 	deleteFav = async (id) => {
-		const response = await this.api.delete(`fav/${id}`);
+		const response = await this.api.delete(`fav/${id}`, {
+			headers: this.getHeaders(),
+		});
 
 		return response.data;
 	};
