@@ -40,14 +40,11 @@ router.post('/user/signin', async (req, res) => {
     const validPassword = await bcrypt.compare(req.body.password, user.password);
     if (!validPassword) return res.status(400).json({ error: 'contraseña no válida' })
 
-    console.log(process.env);
     // create token
     const token = jwt.sign({
         email: user.email,
         id: user._id
     }, process.env.TOKEN_SECRET)
-
-    console.log(token);
 
     res.header('auth-token', token).json({
         error: null,
