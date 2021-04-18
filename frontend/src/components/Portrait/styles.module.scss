@@ -1,33 +1,26 @@
 @import '~styles/colors';
 
 .container {
-    position: relative;
+    width: 400px;
+    border: 1px solid black;
+    display:flex;
+    flex-direction: column;
     font-family: sans-serif;
-    border: 1px solid $secondary;
-    width: 500px;
-    height: 200px;
-    border-radius: 15px;
-    display: flex;
-    background-color: rgba($primary, 0.16);
-    margin: 10px;
 
-    .fav {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        width: 30px;
-
-        &:hover {
-            opacity: 50%;
-        }
-    }
     .pic {
-        width: 40%;
-        padding: 10px;
+        border-bottom: 1px solid black;
     }
 
     .content {
-        width: 60%;
+        position: relative;
+
+        .fav {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+        }
+
         padding: 10px;
 
         .main {
@@ -54,24 +47,5 @@
                 color: $tertiary;
             }
         }
-    }
-
-    &:hover {
-        background-color: rgba($primary, 0.4);
-        cursor: pointer;
-    }
-}
-
-:global {
-	.alive {
-        background-color: green;
-    }
-
-    .dead {
-        background-color: red;
-    }
-
-    .unknown {
-        background-color: grey;
     }
 }

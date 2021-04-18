@@ -33,6 +33,12 @@ class RickMortyApi {
 		return response.data;
 	};
 
+	getCharacter = async (id) => {
+		const response = await this.api.get(`character/${id}`);
+
+		return response.data;
+	};
+
 	addFav = async (id) => {
 		const response = await this.api.post('fav', {char_id: id, fav: true});
 

@@ -6,7 +6,7 @@ import greyHeart from 'assets/grey_heart.png';
 
 const DATA_POINTS = ['gender', 'residence', 'origin'];
 
-const Card = (props) => {
+const Portrait = (props) => {
     const {name, status, species, imgSource, fav, onFavClick} = props;
     return (
         <div className={styles.container}>
@@ -37,4 +37,4 @@ const Card = (props) => {
     );
 }
 
-export default Card;
+export default Portrait;

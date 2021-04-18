@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Card from 'components/Card';
+import { CHARACTERS_FAV_UPDATE } from  'store/character/actionNames';
 import { getCharacters, toggleFav } from 'store/character/actions';
 import styles from './styles.module.scss';
 
@@ -25,7 +26,7 @@ const Character = () => {
                     origin={item.origin.name}
                     imgSource={item.image}
                     fav={item.fav}
-                    onFavClick={() => dispatch(toggleFav(item))}
+                    onFavClick={() => dispatch(toggleFav(item, CHARACTERS_FAV_UPDATE))}
                 />
             )};
         </div>

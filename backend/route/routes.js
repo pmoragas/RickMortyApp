@@ -97,6 +97,8 @@ router.route('/fav/:fav_id')
     .delete(favController.delete);
 router.route('/character')
     .get(charController.index);
+router.route('/character/:char_id')
+    .get(charController.one);
 
 //Export API routes
 module.exports = router;

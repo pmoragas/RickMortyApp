@@ -1,4 +1,4 @@
-import { CHARACTER_UPDATE } from './actionNames';
+import { CHARACTERS_UPDATE, CHARACTER_DETAIL_UPDATE, CHARACTERS_FAV_UPDATE } from './actionNames';
 import RickMortyApi from 'services/rickMortyApi';
 
 export const getCharacters = () => async (dispatch) => {
@@ -6,7 +6,7 @@ export const getCharacters = () => async (dispatch) => {
 		const response = await RickMortyApi.getCharacters();
 
 		dispatch({
-            type: CHARACTER_UPDATE,
+            type: CHARACTERS_UPDATE,
             payload: { ...response },
         });
 	} catch (error) {
@@ -14,7 +14,20 @@ export const getCharacters = () => async (dispatch) => {
 	}
 };
 
-export const toggleFav = (item) => async (dispatch) => {
+export const getCharacter = (id) => async (dispatch) => {
+	try {
+		const response = await RickMortyApi.getCharacter(id);
+
+		dispatch({
+            type: CHARACTER_DETAIL_UPDATE,
+            payload: { ...response },
+        });
+	} catch (error) {
+		console.log(error)
+	}
+};
+
+export const toggleFav = (item, actionName) => async (dispatch) => {
 	try {
 		if (item.fav) {
 			await RickMortyApi.deleteFav(item.id);
@@ -22,11 +35,11 @@ export const toggleFav = (item) => async (dispatch) => {
 			await RickMortyApi.addFav(item.id);
 		}
 
-		const response = await RickMortyApi.getCharacters();
+		item.fav = !item.fav;
 
 		dispatch({
-            type: CHARACTER_UPDATE,
-            payload: { ...response },
+            type: actionName,
+            payload: { ...item },
         });
 	} catch (error) {
 		console.log(error)

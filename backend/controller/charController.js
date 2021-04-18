@@ -19,7 +19,7 @@ exports.index = function (req, res) {
         method: 'GET',
         json: {},
         qs: {
-          offset: 20
+          offset: 100
         }
       };
 
@@ -41,6 +41,42 @@ exports.index = function (req, res) {
     });
 
 
+};
+
+exports.one = function (req, res) {
+    let favs;
+    Fav.get(function (err, fav) {
+        if (err)
+            res.json({
+                status: "error",
+                message: err
+            });
+        favs = fav;
+    });
+
+    const url = `https://rickandmortyapi.com/api/character/${req.params.char_id}`;
+    const requestOptions = {
+        url: url,
+        method: 'GET',
+        json: {},
+        qs: {
+          offset: 20
+        }
+      };
+
+    request(requestOptions, (err, response, body) => {
+    if (err) {
+        console.log(err);
+    } else if (response.statusCode === 200) {
+        const character = body;
+        character.fav = getCharacterFav(character.id, favs);
+
+        res.send(character);
+    } else {
+        console.log(response.statusCode);
+    }
+
+    });
 };
 
 const getCharacterFav = (id, favs) => {
