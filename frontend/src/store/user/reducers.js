@@ -1,7 +1,7 @@
 import { USER_UPDATE } from './actionNames';
 
 const INITIAL_STATE = {
-	user: undefined,
+	user: JSON.parse(localStorage.getItem('user')),
 };
 
 const reducers = (state = INITIAL_STATE, { type, payload }) => {

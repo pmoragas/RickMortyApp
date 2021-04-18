@@ -1,4 +1,4 @@
-import { CHARACTERS_UPDATE, CHARACTER_DETAIL_UPDATE, CHARACTERS_FAV_UPDATE } from './actionNames';
+import { CHARACTERS_UPDATE, CHARACTER_DETAIL_UPDATE } from './actionNames';
 import RickMortyApi from 'services/rickMortyApi';
 
 export const getCharacters = () => async (dispatch) => {

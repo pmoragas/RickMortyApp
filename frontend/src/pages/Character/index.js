@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Card from 'components/Card';
 import { CHARACTERS_DETAIL_PATH } from 'router/paths';
@@ -34,7 +33,7 @@ const Character = () => {
                         fav={item.fav}
                     />
                 </Link>
-            )};
+            )}
         </div>
     );
 }
