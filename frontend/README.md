@@ -1,4 +1,4 @@
-# Node - Express Rick&Morty API
+# React Rick&Morty APP
 
 # To start frontend app:
 npm i
