@@ -1,6 +1,7 @@
 # Node - Express Rick&Morty API
 
 # To start frontend app:
+npm i
 npm run start
 
 # Packages used:

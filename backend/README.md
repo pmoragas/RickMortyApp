@@ -1,6 +1,7 @@
 # Node - Express Rick&Morty API
 
 # To start backend app:
+npm i
 npm run start
 
 
