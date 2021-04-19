@@ -1,6 +1,5 @@
 const Fav = require('../model/favModel');
 
-// Get all Fav
 exports.index = function (req, res) {
     Fav.get(function (err, fav) {
         if (err)
@@ -13,13 +12,12 @@ exports.index = function (req, res) {
             message: "Got Fav Successfully!",
             data: fav
         });
-    });
+    }, req.user.id);
 };
 
-// Add Fav
 exports.add = function (req, res) {
-    console.log(req.body, req.params);
     var fav = new Fav(req.body);
+    fav.user_id = req.user.id;
 
     fav.save(function (err) {
         if (err)
@@ -31,7 +29,6 @@ exports.add = function (req, res) {
     });
 };
 
-// Delete Fav
 exports.delete = function (req, res) {
     Fav.deleteOne({
         char_id: req.params.fav_id

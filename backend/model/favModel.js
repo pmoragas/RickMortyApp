@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-//schema
 var favSchema = mongoose.Schema({
     char_id: {
         type: Number,
@@ -10,10 +9,14 @@ var favSchema = mongoose.Schema({
         type: Boolean,
         required: true
     },
+    user_id: {
+        type: String,
+        required: true
+    },
 });
 
-// Export Char Model
 var Fav = module.exports = mongoose.model('fav', favSchema);
-module.exports.get = function (callback, limit) {
-    Fav.find(callback).limit(limit);
+
+module.exports.get = function (callback, user_id) {
+    Fav.find(callback).where('user_id').equals(user_id);
 }

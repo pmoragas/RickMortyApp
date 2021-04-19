@@ -12,10 +12,10 @@ exports.index = function (req, res) {
                 message: err
             });
         favs = fav;
-    });
+    }, req.user.id);
 
     const requestOptions = {
-        url: 'https://rickandmortyapi.com/api/character',
+        url: process.env.RICK_AND_MORTY_OFFICIAL_API,
         method: 'GET',
         json: {},
         qs: {
@@ -24,26 +24,23 @@ exports.index = function (req, res) {
       };
 
     request(requestOptions, (err, response, body) => {
-    if (err) {
-        console.log(err);
-    } else if (response.statusCode === 200) {
-        const characters = body.results;
+        if (err) {
+            console.log(err);
+        } else if (response.statusCode === 200) {
+            const characters = body.results;
 
-        characters.forEach(char => {
-            char.fav = getCharacterFav(char.id, favs);
-        });
+            characters.forEach(char => {
+                char.fav = getCharacterFav(char.id, favs);
+            });
 
-        res.send(characters);
-    } else {
-        console.log(response.statusCode);
-    }
-
+            res.send(characters);
+        } else {
+            console.log(response.statusCode);
+        }
     });
-
-
 };
 
-exports.one = function (req, res) {
+exports.find = function (req, res) {
     let favs;
     Fav.get(function (err, fav) {
         if (err)
@@ -52,9 +49,9 @@ exports.one = function (req, res) {
                 message: err
             });
         favs = fav;
-    });
+    }, req.user.id);
 
-    const url = `https://rickandmortyapi.com/api/character/${req.params.char_id}`;
+    const url = `${process.env.RICK_AND_MORTY_OFFICIAL_API}/${req.params.char_id}`;
     const requestOptions = {
         url: url,
         method: 'GET',
@@ -65,17 +62,16 @@ exports.one = function (req, res) {
       };
 
     request(requestOptions, (err, response, body) => {
-    if (err) {
-        console.log(err);
-    } else if (response.statusCode === 200) {
-        const character = body;
-        character.fav = getCharacterFav(character.id, favs);
+        if (err) {
+            console.log(err);
+        } else if (response.statusCode === 200) {
+            const character = body;
+            character.fav = getCharacterFav(character.id, favs);
 
-        res.send(character);
-    } else {
-        console.log(response.statusCode);
-    }
-
+            res.send(character);
+        } else {
+            console.log(response.statusCode);
+        }
     });
 };
 
