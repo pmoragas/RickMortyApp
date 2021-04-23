@@ -1,9 +1,11 @@
 import axios from 'axios';
 
+const RICK_MORTY_API_PATH = 'http://localhost:3060/api/';
+
 class RickMortyApi {
 	constructor() {
 		this.api = axios.create({
-			baseURL: 'http://localhost:3030/api/',
+			baseURL: RICK_MORTY_API_PATH,
 			headers: {
 				'Content-type': 'application/json',
 			},
